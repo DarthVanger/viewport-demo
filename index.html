@@ -1,0 +1,144 @@
+<!doctype html>
+
+<html>
+<head>
+  <meta id="viewport" name="viewport" />
+
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    body {
+      border: solid pink 5px;
+      font-size: 2rem;
+    }
+
+    #kvodrati {
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    #square {
+      width: 300px;
+      height: 300px;
+      background: red;
+      color: white;
+      line-height: 300px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    #telefon {
+      position: absolute;
+      z-index: -1;
+      top: 0; left: 0;
+      width: 360px;
+      height: 800px;
+      border: solid green 5px;
+      display: flex;
+      align-items: end;
+      justify-content: end;
+    }
+
+    #laptop {
+      position: absolute;
+      z-index: -1;
+      top: 0; left: 0;
+      width: 1366px;
+      height: 768px;
+      border: solid yellow 5px;
+      display: flex;
+      align-items: end;
+      justify-content: end;
+    }
+
+    #pekarn9 {
+      position: absolute;
+      z-index: -1;
+      top: 0; left: 0;
+      width: 1920px;
+      height: 1080px;
+      border: solid purple 5px;
+      display: flex;
+      align-items: end;
+      justify-content: end;
+    }
+  </style>
+</head>
+
+<body></body>
+
+<script>
+  document.body.innerHTML = `
+    <div id="kvodrati">
+      <div id="square">Kvodrat 300x300</div>
+      <div id="telefon">Telefon 360x800</div>
+      <div id="laptop">Laptop 1366x768</div>
+      <div id="pekarn9">Пекарня 1920x1080</div>
+
+      <h3>Кнопке )</h3>
+
+      <p>
+        <button type="button" onclick="setViewportContent('width=360, initial-scale=1.0')">
+          width=360, initial-scale=1.0
+        </button>
+      </p>
+
+      <p>
+        <button type="button" onclick="setViewportContent('width=1366, initial-scale=1.0')">
+          width=1366, initial-scale=1.0
+        </button>
+      </p>
+
+      <p>
+        <button type="button" onclick="setViewportContent('width=1920, initial-scale=1.0')">
+          width=1920, initial-scale=1.0
+        </button>
+      </p>
+
+      <p>
+         <button type="button" onclick="setViewportContent('width=device-width, initial-scale=1.0')">
+           width=device-width, initial-scale=1.0
+         </button>
+      </p>
+
+      <p>
+        <button type="button" onclick="setViewportContent('width=1366, initial-scale=0.5')">
+          width=1366, initial-scale=0.5
+        </button>
+      </p>
+
+     <section id="current-viewport-settings">
+     </section>
+   </div>
+  `;
+
+  function setViewportContent(viewportString) {
+    const viewport = document.querySelector('#viewport');
+    viewport.setAttribute('content', viewportString);
+
+    document.querySelector('#current-viewport-settings').innerHTML = `
+     <p>
+       Viewport settings: ${viewport.content}
+     </p>
+     <p>
+       Screen width is: ${screen.width}  
+     </p>
+     <p>
+       Screen height is: ${screen.height}  
+     </p>
+   `;
+  }
+
+  setViewportContent("width=360, initial-scale=1");
+</script>
+</html>
